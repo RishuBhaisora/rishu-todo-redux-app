@@ -3,7 +3,6 @@ import React from "react";
 import ToDoList from "./ToDoList";
 
 function App() {
-  
   return (
     <>
       <h1 className="border text-2xl font-black p-2">XTodo</h1>

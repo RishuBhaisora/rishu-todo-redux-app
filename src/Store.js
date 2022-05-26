@@ -1,27 +1,28 @@
-import uuid from "react-uuid";
 import { createStore } from "redux";
 import { TODO_ADDED, TODO_MARKED_DONE, TODO_MARKED_UNDONE } from "./Actions";
 
-// const savedTodoList = JSON.parse(localStorage.getItem("toDoList")) || [];
-// const savedDoneList = JSON.parse(localStorage.getItem("doneList")) || [];
+const currentSavedState =
+  JSON.parse(localStorage.getItem("currentSavedState")) || [];
+
+console.log(currentSavedState);
 const initialState = {
-  todos: [{ id: uuid(), title: "Bring Milk", done: false }],
+  todos: currentSavedState.todos || [],
 };
 
 const reducer = (currentState = initialState, action) => {
   switch (action.type) {
     case TODO_ADDED: {
-      // const newTodoArray = currentState.todos.map((t) => {
-      // if (t !== action.payload) {
-        return {
+      localStorage.setItem(
+        "currentSavedState",
+        JSON.stringify({
           ...currentState,
           todos: [...currentState.todos, action.payload],
-        };
-    //   }return t;
-    // });return {
-    //   ...currentState,
-    //   todos:  newTodoArray,
-    // };
+        })
+      );
+      return {
+        ...currentState,
+        todos: [...currentState.todos, action.payload],
+      };
     }
     case TODO_MARKED_DONE: {
       const newTodoArray = currentState.todos.map((t) => {
@@ -30,6 +31,10 @@ const reducer = (currentState = initialState, action) => {
         }
         return t;
       });
+      localStorage.setItem(
+        "currentSavedState",
+        JSON.stringify({ ...currentState, todos: newTodoArray })
+      );
       return { ...currentState, todos: newTodoArray };
     }
     case TODO_MARKED_UNDONE: {
@@ -39,6 +44,10 @@ const reducer = (currentState = initialState, action) => {
         }
         return t;
       });
+      localStorage.setItem(
+        "currentSavedState",
+        JSON.stringify({ ...currentState, todos: newTodoArray })
+      );
       return { ...currentState, todos: newTodoArray };
     }
     default: {

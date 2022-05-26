@@ -30,19 +30,17 @@ const ToDoList = () => {
     dispatch({ type: TODO_MARKED_UNDONE, payload: payLoad });
   };
 
-  // const saveTodoList = (newToDoList) => {
-
-  //   localStorage.setItem("toDoList", JSON.stringify(newToDoList));
-  // };
-  // const saveDoneList = (doneList) => {
-  //   updateDoneList(doneList);
-  //   localStorage.setItem("doneList", JSON.stringify(doneList));
-  // };
+  let done;
+  let todo;
+  doneList.map((t) => (done = t.title));
+  toDoList.map((t) => (todo = t.title));
 
   const showToDo = () => {
-    if (input) {
-      addToDo({ id: uuid(), title: input, done: false });
-      updateTodoCreateForm(!showTodoCreateForm);
+    if (done !== input && todo !== input) {
+      if (input) {
+        addToDo({ id: uuid(), title: input, done: false });
+        updateTodoCreateForm(!showTodoCreateForm);
+      }
     }
   };
 
