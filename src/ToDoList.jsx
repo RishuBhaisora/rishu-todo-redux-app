@@ -6,8 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   todoSelector,
   doneSelector,
-  todoCountSelector,
-  doneCountSelector,
+  
 } from "./Selectors";
 import { TODO_ADDED, TODO_MARKED_DONE, TODO_MARKED_UNDONE } from "./Actions";
 

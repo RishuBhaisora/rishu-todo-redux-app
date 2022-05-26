@@ -5,6 +5,9 @@ const ListItems = (props) => {
   const change = () => {
     props.onClick(props.task);
   };
+  const deleteTodo=()=>{
+    props.onDelete(props.task);
+  }
 
   return (
     <>
@@ -15,6 +18,11 @@ const ListItems = (props) => {
           input={props.text}
         ></Button>
         <h1 className="p-2 font-black text-xl">{props.task}</h1>
+        {/* <Button
+          theme={"third"}
+          onClick={deleteTodo}
+          input={"Delete"}
+        ></Button> */}
       </div>
     </>
   );
