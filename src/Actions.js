@@ -1,0 +1,3 @@
+export const TODO_ADDED = "ADD_TODO";
+export const TODO_MARKED_DONE = "TODO_MARKED_DONE";
+export const TODO_MARKED_UNDONE = "TODO_MARKED_UNDONE";
