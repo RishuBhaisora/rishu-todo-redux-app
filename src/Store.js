@@ -1,5 +1,10 @@
 import { createStore } from "redux";
-import { TODO_ADDED, TODO_MARKED_DONE, TODO_MARKED_UNDONE } from "./Actions";
+import {
+  TODO_ADDED,
+  TODO_MARKED_DONE,
+  TODO_MARKED_UNDONE,
+  TODO_DELETE,
+} from "./Actions";
 
 const currentSavedState =
   JSON.parse(localStorage.getItem("currentSavedState")) || [];
@@ -47,6 +52,14 @@ const reducer = (currentState = initialState, action) => {
         "currentSavedState",
         JSON.stringify({ ...currentState, todos: newTodoArray })
       );
+      return { ...currentState, todos: newTodoArray };
+    }
+    case TODO_DELETE: {
+      const newTodoArray = currentState.todos.filter((t) =>t.title!==action.payload )
+      localStorage.setItem(
+        "currentSavedState",
+        JSON.stringify({ ...currentState, todos: newTodoArray })
+      );  
       return { ...currentState, todos: newTodoArray };
     }
     default: {

@@ -3,12 +3,13 @@ import Button from "./Button";
 import ListItems from "./ListItems";
 import uuid from "react-uuid";
 import { useDispatch, useSelector } from "react-redux";
+import { todoSelector, doneSelector } from "./Selectors";
 import {
-  todoSelector,
-  doneSelector,
+  TODO_ADDED,
+  TODO_MARKED_DONE,
+  TODO_MARKED_UNDONE,
   
-} from "./Selectors";
-import { TODO_ADDED, TODO_MARKED_DONE, TODO_MARKED_UNDONE } from "./Actions";
+} from "./Actions";
 
 const ToDoList = () => {
   const dispatch = useDispatch();
