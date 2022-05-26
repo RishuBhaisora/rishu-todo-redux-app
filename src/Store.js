@@ -4,7 +4,6 @@ import { TODO_ADDED, TODO_MARKED_DONE, TODO_MARKED_UNDONE } from "./Actions";
 const currentSavedState =
   JSON.parse(localStorage.getItem("currentSavedState")) || [];
 
-console.log(currentSavedState);
 const initialState = {
   todos: currentSavedState.todos || [],
 };
